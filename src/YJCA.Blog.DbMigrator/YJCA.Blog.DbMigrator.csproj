@@ -8,12 +8,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\YJCA.Blog.Domain\YJCA.Blog.Domain.csproj" />
 		<ProjectReference Include="..\YJCA.Blog.EntityFrameWorkCore\YJCA.Blog.EntityFrameWorkCore.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <None Update="appsettings.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
 

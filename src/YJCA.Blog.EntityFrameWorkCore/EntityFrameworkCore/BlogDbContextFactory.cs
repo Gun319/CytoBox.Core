@@ -6,9 +6,9 @@ namespace YJCA.Blog.EntityFrameWorkCore.EntityFrameworkCore
 {
     public class BlogDbContextFactory : IDesignTimeDbContextFactory<BlogDbContext>
     {
-        public BlogDbContext CreateDbContext(string[]? args = null)
+        public BlogDbContext CreateDbContext(string[] args)
         {
-            var configuration = BuildConfiguration();
+            var configuration = args.Any() ? BuildConfiguration(true) : BuildConfiguration();
 
             var Enable = configuration["ConnectionStrings:Enable"];
 
@@ -30,13 +30,22 @@ namespace YJCA.Blog.EntityFrameWorkCore.EntityFrameworkCore
             return new BlogDbContext(builder.Options);
         }
 
-        private static IConfigurationRoot BuildConfiguration()
+        /// <summary>
+        /// 获取文件位置
+        /// </summary>
+        /// <param name="runtime">是否运行时</param>
+        /// <returns></returns>
+        private static IConfigurationRoot BuildConfiguration(bool runtime = false)
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../YJCA.Blog.DbMigrator/"))
-                .AddJsonFile("appsettings.json", optional: false);
+            var builder = new ConfigurationBuilder();
 
-            return builder.Build();
+            if (runtime)
+                builder.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../../"));
+            else
+                builder.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../YJCA.Blog.DbMigrator/"));
+
+            return builder.AddJsonFile("appsettings.json", optional: false)
+                .Build();
         }
     }
 }
