@@ -2,18 +2,36 @@
 using Microsoft.EntityFrameworkCore;
 using YJCA.Blog.EntityFrameWorkCore.EntityFrameworkCore;
 
-internal class Program
+Console.WriteLine("Entity Framework Core Migrate Start !\nGet Pending Migrations...");
+
+using (BlogDbContext dbContextFactory = new BlogDbContextFactory().CreateDbContext(new[] { "1" }))
 {
-    private static void Main(string[] args)
+    var dbContext = dbContextFactory.Database;
+    // 是否存在待迁移
+    if (!dbContext.GetPendingMigrations().Any())
+        Console.WriteLine("No to be migrated");
+    else
     {
-        BlogDbContextFactory dbContextFactory = new();
+        Console.WriteLine($"Pending Migrations：\n{string.Join("\n", await dbContext.GetPendingMigrationsAsync())}");
 
-        var dbContext = dbContextFactory.CreateDbContext(new[] { "1" }).Database;
+        Console.WriteLine("Do you want to continue?(Y/N)");
 
-        if (dbContext.GetMigrations().Any())
-            dbContext.Migrate();
-
-        Console.WriteLine("数据库生成完成！");
-        Console.ReadKey();
+        if (Console.ReadLine().Trim().Equals("y", StringComparison.OrdinalIgnoreCase))
+        {
+            Console.WriteLine("Migrating...");
+            try
+            {
+                dbContext.Migrate();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
     }
 }
+
+Console.WriteLine("Entity Framework Core Migrate Complete !\nPress any key to exit !");
+
+Console.ReadKey();
