@@ -11,7 +11,7 @@ using YJCA.Blog.EntityFrameWorkCore.EntityFrameworkCore;
 namespace YJCA.Blog.EntityFrameWorkCore.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20221230072957_SqliteInit")]
+    [Migration("20230102082806_SqliteInit")]
     partial class SqliteInit
     {
         /// <inheritdoc />
@@ -22,11 +22,14 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
 
             modelBuilder.Entity("YJCA.Blog.Domain.Entity.Role", b =>
                 {
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("AuthorityScope")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CreateBy")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long?>("CreateId")
@@ -40,7 +43,6 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Dids")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Enabled")
@@ -50,7 +52,6 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ModifyBy")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long?>("ModifyId")
@@ -59,24 +60,22 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
                     b.Property<DateTime?>("ModifyTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("OrderSort")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("RoleName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.HasKey("RoleId");
 
                     b.ToTable("T_Role", (string)null);
                 });
 
             modelBuilder.Entity("YJCA.Blog.Domain.Entity.UserInfo", b =>
                 {
+                    b.Property<long>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Age")
@@ -95,7 +94,6 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DepartmentName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ErrorCount")
@@ -124,7 +122,6 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Remark")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Sex")
@@ -136,16 +133,18 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
                     b.Property<DateTime>("UpdateTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("UserId")
-                        .HasColumnType("INTEGER");
+                    b.HasKey("UserId");
 
                     b.ToTable("T_UserInfo", (string)null);
                 });
 
             modelBuilder.Entity("YJCA.Blog.Domain.Entity.UserRole", b =>
                 {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("CreateBy")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long?>("CreateId")
@@ -158,7 +157,6 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ModifyBy")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("ModifyId")
@@ -172,6 +170,8 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
 
                     b.Property<long>("UserId")
                         .HasColumnType("INTEGER");
+
+                    b.HasKey("ID");
 
                     b.ToTable("T_UserRole", (string)null);
                 });

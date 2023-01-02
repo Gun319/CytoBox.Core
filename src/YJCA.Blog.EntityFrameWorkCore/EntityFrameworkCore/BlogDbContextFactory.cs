@@ -40,7 +40,7 @@ namespace YJCA.Blog.EntityFrameWorkCore.EntityFrameworkCore
             var builder = new ConfigurationBuilder();
 
             if (runtime)
-                builder.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../../"));
+                builder.SetBasePath(Path.Combine(Directory.GetCurrentDirectory()));
             else
                 builder.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../YJCA.Blog.DbMigrator/"));
 

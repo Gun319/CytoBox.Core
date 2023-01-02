@@ -24,11 +24,11 @@ namespace YJCA.Blog.EntityFrameWorkCore.EntityFrameworkCore
             //    b.ConfigureByConvention(); //auto configure for the base class props
             //    //...
             //});
-            builder.Entity<UserInfo>().HasNoKey().ToTable("T_UserInfo");
+            builder.Entity<UserInfo>().HasNoKey().ToTable("T_UserInfo").HasKey(u => u.UserId);
 
-            builder.Entity<Role>().HasNoKey().ToTable("T_Role");
+            builder.Entity<Role>().HasNoKey().ToTable("T_Role").HasKey(r => r.RoleId);
 
-            builder.Entity<UserRole>().HasNoKey().ToTable("T_UserRole");
+            builder.Entity<UserRole>().HasNoKey().ToTable("T_UserRole").HasKey(ur => ur.ID);
         }
     }
 }

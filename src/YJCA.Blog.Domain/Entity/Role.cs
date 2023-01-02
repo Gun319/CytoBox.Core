@@ -44,14 +44,9 @@ namespace YJCA.Blog.Domain.Entity
         public string Description { get; set; }
 
         /// <summary>
-        /// 排序
-        /// </summary>
-        public string OrderSort { get; set; }
-
-        /// <summary>
         /// 自定义权限的部门ids
         /// </summary>
-        public string Dids { get; set; }
+        public string? Dids { get; set; }
 
         /// <summary>
         /// 权限范围
@@ -74,7 +69,7 @@ namespace YJCA.Blog.Domain.Entity
         /// <summary>
         /// 创建者
         /// </summary>
-        public string CreateBy { get; set; }
+        public string? CreateBy { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -85,10 +80,12 @@ namespace YJCA.Blog.Domain.Entity
         /// 修改ID
         /// </summary>
         public long? ModifyId { get; set; }
+        
         /// <summary>
         /// 修改者
         /// </summary>
-        public string ModifyBy { get; set; }
+        public string? ModifyBy { get; set; }
+
         /// <summary>
         /// 修改时间
         /// </summary>

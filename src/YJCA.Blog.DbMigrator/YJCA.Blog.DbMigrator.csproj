@@ -7,15 +7,27 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <NoWarn>1701;1702;8602;</NoWarn>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <NoWarn>1701;1702;8602;</NoWarn>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<ProjectReference Include="..\YJCA.Blog.Domain\YJCA.Blog.Domain.csproj" />
-		<ProjectReference Include="..\YJCA.Blog.EntityFrameWorkCore\YJCA.Blog.EntityFrameWorkCore.csproj" />
+	  <None Remove="appsettings.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="appsettings.json">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </None>
+	  <Content Include="appsettings.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\YJCA.Blog.Domain\YJCA.Blog.Domain.csproj" />
+		<ProjectReference Include="..\YJCA.Blog.EntityFrameWorkCore\YJCA.Blog.EntityFrameWorkCore.csproj" />
 	</ItemGroup>
 
 </Project>

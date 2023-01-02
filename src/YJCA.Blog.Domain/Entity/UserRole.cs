@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YJCA.Blog.Domain.Entity
 {
@@ -18,6 +20,12 @@ namespace YJCA.Blog.Domain.Entity
             CreateId = uid;
             CreateTime = DateTime.Now;
         }
+
+        /// <summary>
+        /// 主键Id
+        /// </summary>        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
         /// <summary>
         /// 用户Id
@@ -42,7 +50,7 @@ namespace YJCA.Blog.Domain.Entity
         /// <summary>
         /// 创建者
         /// </summary>
-        public string CreateBy { get; set; }
+        public string? CreateBy { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -57,7 +65,7 @@ namespace YJCA.Blog.Domain.Entity
         /// <summary>
         /// 修改者
         /// </summary>
-        public string ModifyBy { get; set; }
+        public string? ModifyBy { get; set; }
 
         /// <summary>
         /// 修改时间

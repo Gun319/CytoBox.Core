@@ -13,4 +13,7 @@
 	  <NoWarn>1701;1702;8618;</NoWarn>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.*" />
+	</ItemGroup>
 </Project>

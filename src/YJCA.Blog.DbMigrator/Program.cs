@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using YJCA.Blog.EntityFrameWorkCore.EntityFrameworkCore;
 
-Console.WriteLine("Entity Framework Core Migrate Start !\nGet Pending Migrations...");
+Console.WriteLine("Entity Framework Core Migrate Start!\nGet Pending Migrations...");
 
-using (BlogDbContext dbContextFactory = new BlogDbContextFactory().CreateDbContext(new[] { "1" }))
+string[] runtime = new[] { "y" };
+
+using (BlogDbContext dbContextFactory = new BlogDbContextFactory().CreateDbContext(runtime))
 {
     var dbContext = dbContextFactory.Database;
     // 是否存在待迁移
@@ -21,7 +23,7 @@ using (BlogDbContext dbContextFactory = new BlogDbContextFactory().CreateDbConte
             Console.WriteLine("Migrating...");
             try
             {
-                dbContext.Migrate();
+                await dbContext.MigrateAsync();
             }
             catch (Exception ex)
             {
@@ -30,8 +32,15 @@ using (BlogDbContext dbContextFactory = new BlogDbContextFactory().CreateDbConte
             }
         }
     }
+
+    Console.WriteLine("Entity Framework Core Migrate Complete!");
+
+    Console.WriteLine("Whether to initialize the database?(Y/N)");
+    if (Console.ReadLine().Trim().Equals("y", StringComparison.OrdinalIgnoreCase))
+    {
+        Console.WriteLine(await DbInitializer.Initialize(dbContextFactory));
+    }
 }
 
-Console.WriteLine("Entity Framework Core Migrate Complete !\nPress any key to exit !");
-
+Console.WriteLine("Press any key to exit!");
 Console.ReadKey();

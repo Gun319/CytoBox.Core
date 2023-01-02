@@ -15,35 +15,37 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
                 name: "T_Role",
                 columns: table => new
                 {
-                    RoleId = table.Column<int>(type: "INTEGER", nullable: false),
+                    RoleId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     IsDeleted = table.Column<bool>(type: "INTEGER", nullable: true),
                     RoleName = table.Column<string>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: false),
-                    OrderSort = table.Column<string>(type: "TEXT", nullable: false),
-                    Dids = table.Column<string>(type: "TEXT", nullable: false),
+                    Dids = table.Column<string>(type: "TEXT", nullable: true),
                     AuthorityScope = table.Column<int>(type: "INTEGER", nullable: false),
                     Enabled = table.Column<bool>(type: "INTEGER", nullable: false),
                     CreateId = table.Column<long>(type: "INTEGER", nullable: true),
-                    CreateBy = table.Column<string>(type: "TEXT", nullable: false),
+                    CreateBy = table.Column<string>(type: "TEXT", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "TEXT", nullable: true),
                     ModifyId = table.Column<long>(type: "INTEGER", nullable: true),
-                    ModifyBy = table.Column<string>(type: "TEXT", nullable: false),
+                    ModifyBy = table.Column<string>(type: "TEXT", nullable: true),
                     ModifyTime = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_T_Role", x => x.RoleId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "T_UserInfo",
                 columns: table => new
                 {
-                    UserId = table.Column<long>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<long>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     LoginName = table.Column<string>(type: "TEXT", nullable: false),
                     LoginPWD = table.Column<string>(type: "TEXT", nullable: false),
                     RealName = table.Column<string>(type: "TEXT", nullable: false),
                     Status = table.Column<int>(type: "INTEGER", nullable: false),
-                    Remark = table.Column<string>(type: "TEXT", nullable: false),
+                    Remark = table.Column<string>(type: "TEXT", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdateTime = table.Column<DateTime>(type: "TEXT", nullable: false),
                     CriticalModifyTime = table.Column<DateTime>(type: "TEXT", nullable: false),
@@ -53,31 +55,35 @@ namespace YJCA.Blog.EntityFrameWorkCore.Migrations
                     Sex = table.Column<int>(type: "INTEGER", nullable: false),
                     Age = table.Column<int>(type: "INTEGER", nullable: false),
                     Birth = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Address = table.Column<string>(type: "TEXT", nullable: false),
+                    Address = table.Column<string>(type: "TEXT", nullable: true),
                     IsDeleted = table.Column<bool>(type: "INTEGER", nullable: false),
                     DepartmentId = table.Column<int>(type: "INTEGER", nullable: false),
-                    DepartmentName = table.Column<string>(type: "TEXT", nullable: false)
+                    DepartmentName = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_T_UserInfo", x => x.UserId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "T_UserRole",
                 columns: table => new
                 {
+                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<long>(type: "INTEGER", nullable: false),
                     RoleId = table.Column<int>(type: "INTEGER", nullable: false),
                     IsDeleted = table.Column<bool>(type: "INTEGER", nullable: true),
                     CreateId = table.Column<long>(type: "INTEGER", nullable: true),
-                    CreateBy = table.Column<string>(type: "TEXT", nullable: false),
+                    CreateBy = table.Column<string>(type: "TEXT", nullable: true),
                     CreateTime = table.Column<DateTime>(type: "TEXT", nullable: true),
                     ModifyId = table.Column<int>(type: "INTEGER", nullable: true),
-                    ModifyBy = table.Column<string>(type: "TEXT", nullable: false),
+                    ModifyBy = table.Column<string>(type: "TEXT", nullable: true),
                     ModifyTime = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_T_UserRole", x => x.ID);
                 });
         }
 

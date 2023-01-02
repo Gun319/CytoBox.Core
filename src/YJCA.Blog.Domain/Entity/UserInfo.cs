@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
 
 namespace YJCA.Blog.Domain.Entity
 {
@@ -33,12 +32,6 @@ namespace YJCA.Blog.Domain.Entity
         /// <summary>
         /// 登录账号
         /// </summary> 
-        //:eg model 根据sqlsugar的完整定义可以如下定义，ColumnDescription可定义表字段备注
-        //[SugarColumn(IsNullable = false, ColumnDescription = "登录账号", IsPrimaryKey = false, IsIdentity = false, ColumnDataType = "nvarchar", Length = 50)]
-        //ColumnDescription 表字段备注，  已在MSSQL测试，配合 [SugarTable("SysUserInfo", "用户表")]//('数据库表名'，'数据库表备注')
-        //可以完整生成 表备注和各个字段的中文备注
-        //2022/10/11
-        //测试mssql 发现 不写ColumnDescription，写好注释在mssql下也能生成表字段备注
         public string LoginName { get; set; }
 
         /// <summary>
@@ -59,7 +52,7 @@ namespace YJCA.Blog.Domain.Entity
         /// <summary>
         /// 备注
         /// </summary> 
-        public string Remark { get; set; }
+        public string? Remark { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -109,22 +102,12 @@ namespace YJCA.Blog.Domain.Entity
         /// <summary>
         /// 地址
         /// </summary>        
-        public string Address { get; set; }
+        public string? Address { get; set; }
 
         /// <summary>
         /// 获取或设置是否禁用，逻辑上的删除，非物理删除
         /// </summary>
         public bool IsDeleted { get; set; }
-
-        /// <summary>
-        /// 角色
-        /// </summary>
-        //public List<string> RoleNames { get; set; }
-
-        /// <summary>
-        /// 自定义权限的部门ids
-        /// </summary>
-        //public List<int> Dids { get; set; }
 
         /// <summary>
         /// 部门Id
@@ -134,6 +117,6 @@ namespace YJCA.Blog.Domain.Entity
         /// <summary>
         /// 部门
         /// </summary>
-        public string DepartmentName { get; set; }
+        public string? DepartmentName { get; set; }
     }
 }
