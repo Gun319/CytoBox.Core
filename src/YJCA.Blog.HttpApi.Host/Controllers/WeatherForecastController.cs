@@ -38,7 +38,7 @@ namespace YJCA.Blog.HttpApi.Host.Controllers
         }
 
         /// <summary>
-        /// Post 测试API
+        /// Get 测试API
         /// </summary>
         /// <param name="userName">用户名</param>
         /// <param name="password">密码</param>
