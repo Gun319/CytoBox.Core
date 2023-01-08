@@ -1,6 +1,57 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using IGeekFan.AspNetCore.Knife4jUI;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.OpenApi.Models;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+
+// 注册 Swagger
+builder.Services.AddSwaggerGen(s =>
+{
+    s.SwaggerDoc("v1", new OpenApiInfo { Title = "YJCA.Blog API", Version = "V1" });
+    s.AddServer(new OpenApiServer()
+    {
+        Url = "",
+        Description = ""
+    });
+    s.CustomOperationIds(apiDesc =>
+    {
+        var controllerAction = apiDesc.ActionDescriptor as ControllerActionDescriptor;
+        return $"{controllerAction.ControllerName}-{controllerAction.ActionName}";
+    });
+    s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "SwaggerDemo.xml"), true);
+});
+
+var app = builder.Build();
+// Configure the HTTP request pipeline.
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();    
+    app.UseKnife4UI(s =>
+    {
+        s.RoutePrefix = string.Empty; // serve the UI at root
+        s.SwaggerEndpoint("/v1/api-docs", "V1 Docs");
+    });
+}
+
+// 路由中间件一定要添加
+app.UseRouting();
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapSwagger("{documentName}/api-docs");
+});
+
+app.UseHttpsRedirection();
+
+app.UseAuthentication();
+
+app.MapControllers();
 
 app.Run();

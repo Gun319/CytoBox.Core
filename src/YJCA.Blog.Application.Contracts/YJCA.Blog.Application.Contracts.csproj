@@ -5,4 +5,8 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\YJCA.Blog.Domain\YJCA.Blog.Domain.csproj" />
+	</ItemGroup>
+
 </Project>
