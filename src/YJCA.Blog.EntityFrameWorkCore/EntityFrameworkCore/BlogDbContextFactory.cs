@@ -25,6 +25,9 @@ namespace YJCA.Blog.EntityFrameWorkCore.EntityFrameworkCore
                 case "MySql":
                     builder.UseMySql(configuration.GetConnectionString(Enable), MySqlServerVersion.LatestSupportedServerVersion);
                     break;
+                case "PostgreSQL":
+                    builder.UseNpgsql(configuration.GetConnectionString(Enable));
+                    break;
             }
 
             return new BlogDbContext(builder.Options);
