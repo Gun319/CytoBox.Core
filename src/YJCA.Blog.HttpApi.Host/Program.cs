@@ -1,12 +1,9 @@
 using IGeekFan.AspNetCore.Knife4jUI;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
-var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json").Build();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -29,24 +26,12 @@ builder.Services.AddSwaggerGen(s =>
     s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "SwaggerDemo.xml"), true);
 });
 
-//  «∑Ò∆Ù”√øÁ”Ú
-if (config.GetValue<bool>("IsEnableCors"))
-{
-    builder.Services.AddCors(option =>
-    {
-        option.AddPolicy("cors", builder =>
-        {
-            builder.AllowAnyMethod().SetIsOriginAllowed(_ => true).AllowAnyHeader().AllowCredentials();
-        });
-    });
-}
-
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
+    app.UseSwagger();    
     app.UseKnife4UI(s =>
     {
         s.RoutePrefix = string.Empty; // serve the UI at root
@@ -62,11 +47,6 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllers();
     endpoints.MapSwagger("{documentName}/api-docs");
 });
-
-if (config.GetValue<bool>("IsEnableCors"))
-{
-    app.UseCors("cors");
-}
 
 app.UseHttpsRedirection();
 
