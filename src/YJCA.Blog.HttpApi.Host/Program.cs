@@ -5,6 +5,10 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json").Build();
+
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -26,6 +30,18 @@ builder.Services.AddSwaggerGen(s =>
     s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "SwaggerDemo.xml"), true);
 });
 
+// 是否启用跨域
+if (config.GetValue<bool>("IsEnableCors"))
+{
+    builder.Services.AddCors(option =>
+    {
+        option.AddPolicy("cors", builder =>
+        {
+            builder.AllowAnyMethod().SetIsOriginAllowed(_ => true).AllowAnyHeader().AllowCredentials();
+        });
+    });
+}
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 
@@ -37,6 +53,11 @@ if (app.Environment.IsDevelopment())
         s.RoutePrefix = string.Empty; // serve the UI at root
         s.SwaggerEndpoint("/v1/api-docs", "V1 Docs");
     });
+}
+
+if (config.GetValue<bool>("IsEnableCors"))
+{
+    app.UseCors("cors");
 }
 
 // 路由中间件一定要添加
