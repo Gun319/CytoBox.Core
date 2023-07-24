@@ -2,17 +2,17 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore
+namespace Cytobox.EntityFrameWorkCore.EntityFrameworkCore
 {
-    public class BlogDbContextFactory : IDesignTimeDbContextFactory<BlogDbContext>
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
     {
-        public BlogDbContext CreateDbContext(string[] args)
+        public AppDbContext CreateDbContext(string[] args)
         {
             var configuration = args.Any() ? BuildConfiguration(true) : BuildConfiguration();
 
             var Enable = configuration["ConnectionStrings:Enable"];
 
-            var builder = new DbContextOptionsBuilder<BlogDbContext>();
+            var builder = new DbContextOptionsBuilder<AppDbContext>();
 
             switch (Enable)
             {
@@ -30,7 +30,7 @@ namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore
                     break;
             }
 
-            return new BlogDbContext(builder.Options);
+            return new AppDbContext(builder.Options);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore
             if (runtime)
                 builder.SetBasePath(Path.Combine(Directory.GetCurrentDirectory()));
             else
-                builder.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../YJCA.Blog.DbMigrator/"));
+                builder.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../CytoBox.DbMigrator/"));
 
             return builder.AddJsonFile("appsettings.json", optional: false)
                 .Build();

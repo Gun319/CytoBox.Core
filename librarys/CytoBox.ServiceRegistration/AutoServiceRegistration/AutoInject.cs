@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace CytoBox.ServiceRegistration.AutoServiceRegistration
+namespace Cytobox.ServiceRegistration.AutoServiceRegistration
 {
     /// <summary>
     /// Auto DI

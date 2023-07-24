@@ -7,25 +7,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0C190CE2-66F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{448D2F82-B011-4E1E-B772-22B84838242F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CytoBox.EntityFrameWorkCore", "src\CytoBox.EntityFrameWorkCore\CytoBox.EntityFrameWorkCore.csproj", "{EC79C76C-1436-47A9-BFE5-1ED6C23C7C45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cytobox.EntityFrameWorkCore", "src\Cytobox.EntityFrameWorkCore\Cytobox.EntityFrameWorkCore.csproj", "{EC79C76C-1436-47A9-BFE5-1ED6C23C7C45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CytoBox.Application", "src\CytoBox.Application\CytoBox.Application.csproj", "{3963F35C-23E3-4EC9-BC7F-AB1462B14F5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cytobox.Application", "src\Cytobox.Application\Cytobox.Application.csproj", "{3963F35C-23E3-4EC9-BC7F-AB1462B14F5D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CytoBox.Domain", "src\CytoBox.Domain\CytoBox.Domain.csproj", "{3FB0FB88-C24F-4B43-9868-7D6C1DDA1E58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cytobox.Domain", "src\Cytobox.Domain\Cytobox.Domain.csproj", "{3FB0FB88-C24F-4B43-9868-7D6C1DDA1E58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CytoBox.Application.Contracts", "src\CytoBox.Application.Contracts\CytoBox.Application.Contracts.csproj", "{3A4094CE-9B83-412E-AF52-4B1D6B8106A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cytobox.Application.Contracts", "src\Cytobox.Application.Contracts\Cytobox.Application.Contracts.csproj", "{3A4094CE-9B83-412E-AF52-4B1D6B8106A4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CytoBox.Core", "src\CytoBox.Core\CytoBox.Core.csproj", "{F6DC1E7A-D91C-48DE-B13D-A48CB105F75B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cytobox.Core", "src\Cytobox.Core\Cytobox.Core.csproj", "{F6DC1E7A-D91C-48DE-B13D-A48CB105F75B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CytoBox.DbMigrator", "src\CytoBox.DbMigrator\CytoBox.DbMigrator.csproj", "{C324CF14-96B8-4691-9CCC-45CB7489D295}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cytobox.DbMigrator", "src\Cytobox.DbMigrator\Cytobox.DbMigrator.csproj", "{C324CF14-96B8-4691-9CCC-45CB7489D295}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CytoBox.HttpApi.Host", "src\CytoBox.HttpApi.Host\CytoBox.HttpApi.Host.csproj", "{AB07F0EF-68AD-4384-A472-38B40A50D4C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cytobox.HttpApi.Host", "src\Cytobox.HttpApi.Host\Cytobox.HttpApi.Host.csproj", "{AB07F0EF-68AD-4384-A472-38B40A50D4C5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CytoBox.Application.Tests", "test\CytoBox.Application.Tests\CytoBox.Application.Tests.csproj", "{91D981A6-C773-420C-9A8A-CCE14BC9C000}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cytobox.Application.Tests", "test\Cytobox.Application.Tests\Cytobox.Application.Tests.csproj", "{91D981A6-C773-420C-9A8A-CCE14BC9C000}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librarys", "Librarys", "{0AAC92C6-8445-49BF-909C-605828412D68}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CytoBox.ServiceRegistration", "Librarys\CytoBox.ServiceRegistration\CytoBox.ServiceRegistration.csproj", "{27EF2115-EA94-4B08-9E81-19C036CE7D8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cytobox.ServiceRegistration", "Librarys\Cytobox.ServiceRegistration\Cytobox.ServiceRegistration.csproj", "{27EF2115-EA94-4B08-9E81-19C036CE7D8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

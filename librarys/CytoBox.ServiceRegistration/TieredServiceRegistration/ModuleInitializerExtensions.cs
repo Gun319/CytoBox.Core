@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace CytoBox.ServiceRegistration.TieredServiceRegistration
+namespace Cytobox.ServiceRegistration.TieredServiceRegistration
 {
     /// <summary>
     /// Module Initializer 模块初始化

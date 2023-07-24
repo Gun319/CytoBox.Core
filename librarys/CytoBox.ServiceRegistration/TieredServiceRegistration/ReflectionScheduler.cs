@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 
-namespace CytoBox.ServiceRegistration.TieredServiceRegistration
+namespace Cytobox.ServiceRegistration.TieredServiceRegistration
 {
     public class ReflectionScheduler
     {

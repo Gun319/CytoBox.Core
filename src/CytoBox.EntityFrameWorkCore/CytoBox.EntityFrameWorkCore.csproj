@@ -32,11 +32,7 @@
 
 
 	<ItemGroup>
-		<Folder Include="Migrations\" />
-	</ItemGroup>
-
-
-	<ItemGroup>
+	  <ProjectReference Include="..\CytoBox.Core\CytoBox.Core.csproj" />
 	  <ProjectReference Include="..\CytoBox.Domain\CytoBox.Domain.csproj" />
 	</ItemGroup>
 
