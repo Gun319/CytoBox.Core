@@ -6,16 +6,8 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<NoWarn>1701;1702;NU1608</NoWarn>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<NoWarn>1701;1702;NU1608</NoWarn>
-	</PropertyGroup>
-
-
 	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.20" />		
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.*" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.*" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.*">
@@ -23,21 +15,19 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.*" />
-		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.*" />
+		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.*" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.*" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.*" />
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.*" />
 	</ItemGroup>
 
-
 	<ItemGroup>
-		<Folder Include="Migrations\" />
+	  <ProjectReference Include="..\CytoBox.Core\CytoBox.Core.csproj" />
 	</ItemGroup>
 
-
 	<ItemGroup>
-	  <ProjectReference Include="..\CytoBox.Domain\CytoBox.Domain.csproj" />
+	  <Folder Include="Models\Dtos\" />
 	</ItemGroup>
 
 </Project>

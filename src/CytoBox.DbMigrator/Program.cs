@@ -1,12 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-using CytoBox.EntityFrameWorkCore.EntityFrameworkCore;
+﻿using CytoBox.EntityFrameWorkCore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine("Entity Framework Core Migrate Start!\nGet Pending Migrations...");
 
 string[] runtime = new[] { "y" };
 
-using (BlogDbContext dbContextFactory = new BlogDbContextFactory().CreateDbContext(runtime))
+using (AppDbContext dbContextFactory = new DesignTimeDbContextFactory().CreateDbContext(runtime))
 {
     var dbContext = dbContextFactory.Database;
     // 是否存在待迁移
@@ -18,7 +17,7 @@ using (BlogDbContext dbContextFactory = new BlogDbContextFactory().CreateDbConte
 
         Console.WriteLine("Do you want to continue?(Y/N)");
 
-        if (Console.ReadLine().Trim().Equals("y", StringComparison.OrdinalIgnoreCase))
+        if (Console.ReadLine()!.Trim().Equals("y", StringComparison.OrdinalIgnoreCase))
         {
             Console.WriteLine("Migrating...");
             try
@@ -36,7 +35,7 @@ using (BlogDbContext dbContextFactory = new BlogDbContextFactory().CreateDbConte
     Console.WriteLine("Entity Framework Core Migrate Complete!");
 
     Console.WriteLine("Whether to initialize the database?(Y/N)");
-    if (Console.ReadLine().Trim().Equals("y", StringComparison.OrdinalIgnoreCase))
+    if (Console.ReadLine()!.Trim().Equals("y", StringComparison.OrdinalIgnoreCase))
     {
         Console.WriteLine(await DbInitializer.Initialize(dbContextFactory));
     }

@@ -1,6 +1,9 @@
+using CytoBox.Core.Enum;
+using CytoBox.ServiceRegistration.TieredServiceRegistration;
 using IGeekFan.AspNetCore.Knife4jUI;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,19 +18,29 @@ builder.Services.AddEndpointsApiExplorer();
 // 注册 Swagger
 builder.Services.AddSwaggerGen(s =>
 {
-    s.SwaggerDoc("v1", new OpenApiInfo { Title = "YJCA.Blog API", Version = "V1" });
-    s.AddServer(new OpenApiServer()
+    typeof(OpenApiGroup).GetEnumNames().ToList().ForEach(version =>
     {
-        Url = "",
-        Description = ""
+        s.SwaggerDoc(version, new OpenApiInfo { Title = $"{version} API", Version = version });
+
+        s.AddServer(new OpenApiServer()
+        {
+            Url = $" ",
+            Description = "vvv"
+        });
+
+        s.CustomOperationIds(apiDesc =>
+        {
+            var controllerAction = apiDesc.ActionDescriptor as ControllerActionDescriptor;
+            return $"{controllerAction?.ControllerName}-{controllerAction?.ActionName}";
+        });
     });
-    s.CustomOperationIds(apiDesc =>
-    {
-        var controllerAction = apiDesc.ActionDescriptor as ControllerActionDescriptor;
-        return $"{controllerAction.ControllerName}-{controllerAction.ActionName}";
-    });
+
     s.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "SwaggerDemo.xml"), true);
 });
+
+// 分层服务注入
+string assemblyPrefix = Assembly.GetExecutingAssembly().GetName().Name!.Split('.').FirstOrDefault()!;
+builder.Services.RunModuleInitializers(ReflectionScheduler.GetAllReferencedAssemblies(assemblyPrefix));
 
 // 是否启用跨域
 if (config.GetValue<bool>("IsEnableCors"))
@@ -49,8 +62,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseKnife4UI(s =>
     {
-        s.RoutePrefix = string.Empty; // serve the UI at root
-        s.SwaggerEndpoint("/v1/api-docs", "V1 Docs");
+        s.RoutePrefix = ""; // serve the UI at root
+
+        typeof(OpenApiGroup).GetEnumNames().ToList().ForEach(version =>
+        {
+            s.SwaggerEndpoint($"/{version}/api-docs", $"{version} Docs");
+        });
+
+        s.DefaultModelExpandDepth(-1); // 隐藏 API 中定义的 model
     });
 }
 
