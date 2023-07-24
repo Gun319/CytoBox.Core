@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/src/CytoBox.DbMigrator/CytoBox.db
+/src/CytoBox.EntityFrameWorkCore/Migrations/20230724072323_Init.cs
+/src/CytoBox.EntityFrameWorkCore/Migrations/AppDbContextModelSnapshot.cs
