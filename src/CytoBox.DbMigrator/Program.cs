@@ -1,11 +1,12 @@
-﻿using CytoBox.EntityFrameWorkCore.EntityFrameworkCore;
+﻿// See https://aka.ms/new-console-template for more information
+using CytoBox.EntityFrameWorkCore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine("Entity Framework Core Migrate Start!\nGet Pending Migrations...");
 
 string[] runtime = new[] { "y" };
 
-using (AppDbContext dbContextFactory = new DesignTimeDbContextFactory().CreateDbContext(runtime))
+using (BlogDbContext dbContextFactory = new BlogDbContextFactory().CreateDbContext(runtime))
 {
     var dbContext = dbContextFactory.Database;
     // 是否存在待迁移

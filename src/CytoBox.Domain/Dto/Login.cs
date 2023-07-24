@@ -1,4 +1,4 @@
-﻿namespace Cytobox.Domain.Dto
+﻿namespace CytoBox.Domain.Dto
 {
     public class Login
     {

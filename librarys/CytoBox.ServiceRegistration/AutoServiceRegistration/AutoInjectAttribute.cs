@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cytobox.ServiceRegistration.AutoServiceRegistration
+namespace CytoBox.ServiceRegistration.AutoServiceRegistration
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class AutoInjectAttribute : Attribute

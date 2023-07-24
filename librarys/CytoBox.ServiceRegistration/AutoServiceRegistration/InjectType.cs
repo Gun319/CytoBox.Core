@@ -1,4 +1,4 @@
-﻿namespace Cytobox.ServiceRegistration.AutoServiceRegistration
+﻿namespace CytoBox.ServiceRegistration.AutoServiceRegistration
 {
     /// <summary>
     /// Inject Type

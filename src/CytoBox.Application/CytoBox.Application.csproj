@@ -2,12 +2,13 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
+		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\CytoBox.Application.Contracts\CytoBox.Application.Contracts.csproj" />
+		<ProjectReference Include="..\CytoBox.Core\CytoBox.Core.csproj" />
 	</ItemGroup>
 
 </Project>

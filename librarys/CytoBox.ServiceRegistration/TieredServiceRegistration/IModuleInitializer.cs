@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Cytobox.ServiceRegistration.TieredServiceRegistration
+namespace CytoBox.ServiceRegistration.TieredServiceRegistration
 {
     /// <summary>
     /// Module Initializer
