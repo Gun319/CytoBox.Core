@@ -1,4 +1,4 @@
-﻿namespace CytoBox.Core.Enum
+﻿namespace CytoBox.Core.Enums
 {
     public enum WriteAndRead
     {

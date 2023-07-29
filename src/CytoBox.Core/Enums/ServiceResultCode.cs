@@ -1,4 +1,4 @@
-﻿namespace CytoBox.Core.Enum
+﻿namespace CytoBox.Core.Enums
 {
     /// <summary>
     /// 服务层响应码枚举

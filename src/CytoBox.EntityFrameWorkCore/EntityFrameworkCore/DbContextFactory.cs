@@ -1,4 +1,4 @@
-﻿using CytoBox.Core.Enum;
+﻿using CytoBox.Core.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics.CodeAnalysis;

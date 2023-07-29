@@ -1,4 +1,8 @@
-﻿using CytoBox.ServiceRegistration.TieredServiceRegistration;
+﻿using CytoBox.HttpApi.Host.Commons.Filters;
+using CytoBox.ServiceRegistration.AutoServiceRegistration;
+using CytoBox.ServiceRegistration.TieredServiceRegistration;
+using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace CytoBox.HttpApi.Host
 {
@@ -6,7 +10,15 @@ namespace CytoBox.HttpApi.Host
     {
         public void Initialize(IServiceCollection services)
         {
-            throw new NotImplementedException();
+            // Filter
+            services.Configure<MvcOptions>(options =>
+            {
+                options.Filters.Add<FunActionFilter>();
+
+                //options.Filters.Add<RateLimitActionFilter>(); // 限流器
+            });
+            string assemblyPrefix = Assembly.GetExecutingAssembly().GetName().Name!.Split('.').FirstOrDefault()!;
+            services.AddAutoDi(assemblyPrefix);
         }
     }
 }

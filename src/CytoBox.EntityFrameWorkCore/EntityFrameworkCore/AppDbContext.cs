@@ -51,7 +51,7 @@ namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore
                 // Each User can have many entries in the UserRole join table
                 b.HasMany<UserRole>().WithOne().HasForeignKey(ur => ur.UserId).IsRequired();
             });
-             
+
             builder.Entity<Role>(b =>
             {
                 b.HasKey(r => r.Id);
@@ -63,9 +63,9 @@ namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore
                 b.Property(u => u.Name).HasMaxLength(256);
                 b.Property(u => u.NormalizedName).HasMaxLength(256);
 
-                b.HasMany<UserRole>().WithOne().HasForeignKey(ur => ur.RoleId).IsRequired();                 
+                b.HasMany<UserRole>().WithOne().HasForeignKey(ur => ur.RoleId).IsRequired();
             });
-             
+
             builder.Entity<UserRole>(b =>
             {
                 b.HasKey(r => new { r.UserId, r.RoleId });

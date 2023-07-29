@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace CytoBox.Core.Enum
+namespace CytoBox.Core.Enums
 {
     public enum OpenApiGroup
     {

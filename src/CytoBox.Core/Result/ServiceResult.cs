@@ -1,5 +1,4 @@
-﻿using CytoBox.Core.Enum;
-using System;
+﻿using CytoBox.Core.Enums;
 
 namespace CytoBox.Core.Result
 {

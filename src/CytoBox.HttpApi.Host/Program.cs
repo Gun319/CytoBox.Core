@@ -1,4 +1,4 @@
-using CytoBox.Core.Enum;
+using CytoBox.Core.Enums;
 using CytoBox.ServiceRegistration.TieredServiceRegistration;
 using IGeekFan.AspNetCore.Knife4jUI;
 using Microsoft.AspNetCore.Mvc.Controllers;
