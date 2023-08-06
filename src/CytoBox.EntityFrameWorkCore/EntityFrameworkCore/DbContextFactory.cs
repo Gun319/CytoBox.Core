@@ -1,6 +1,7 @@
 ﻿using CytoBox.Core.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System.Diagnostics.CodeAnalysis;
 
 namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore
@@ -59,6 +60,22 @@ namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore
             }
 
             var builder = new DbContextOptionsBuilder<AppDbContext>();
+
+#if DEBUG
+            builder.UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll);
+            builder.EnableSensitiveDataLogging();
+
+            // 记录日志
+            builder.LogTo(msg =>
+            {
+                // 调试-窗口消息
+                System.Diagnostics.Debug.WriteLine(msg);
+                // 输出-窗口消息
+                Console.WriteLine(msg);
+            });
+#else
+            builder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+#endif
 
             switch (Enable)
             {

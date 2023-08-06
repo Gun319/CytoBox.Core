@@ -1,4 +1,4 @@
-﻿using CytoBox.EntityFrameWorkCore.Models.Entitys;
+﻿using CytoBox.EntityFrameWorkCore.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore

@@ -10,4 +10,8 @@
 		<ProjectReference Include="..\CytoBox.EntityFrameWorkCore\CytoBox.EntityFrameWorkCore.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Dtos\" />
+	</ItemGroup>
+
 </Project>

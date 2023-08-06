@@ -4,7 +4,7 @@ using CytoBox.ServiceRegistration.TieredServiceRegistration;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 
-namespace CytoBox.HttpApi.Host
+namespace CytoBox.HttpApi.Host.ServiceRegister
 {
     internal class ModuleInit : IModuleInitializer
     {
