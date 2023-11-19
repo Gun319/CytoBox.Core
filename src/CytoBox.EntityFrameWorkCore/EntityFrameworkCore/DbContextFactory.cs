@@ -89,7 +89,7 @@ namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore
                     builder.UseMySql(connStr, MySqlServerVersion.LatestSupportedServerVersion);
                     break;
                 case "PostgreSQL":
-                    builder.UseNpgsql(connStr);
+                    //builder.UseNpgsql(connStr);
                     break;
             }
             return new AppDbContext(builder.Options);

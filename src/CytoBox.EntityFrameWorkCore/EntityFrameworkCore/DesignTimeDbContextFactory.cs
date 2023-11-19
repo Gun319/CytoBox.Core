@@ -26,7 +26,7 @@ namespace CytoBox.EntityFrameWorkCore.EntityFrameworkCore
                     builder.UseMySql(configuration.GetConnectionString(Enable), MySqlServerVersion.LatestSupportedServerVersion);
                     break;
                 case "PostgreSQL":
-                    builder.UseNpgsql(configuration.GetConnectionString(Enable));
+                    //builder.UseNpgsql(configuration.GetConnectionString(Enable));
                     break;
             }
 
